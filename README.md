@@ -5,8 +5,7 @@ Robot framework tests for webshop.
 Resources:
 - http://robotframework.org/
 - https://github.com/robotframework/robotframework
-- https://pypi.python.org/pypi/robotframework
-- https://github.com/robotframework/Selenium2Library
+- https://github.com/robotframework/SeleniumLibrary
 
 ### Installation
 Prerequisites, python python-pip, web browser (Firefox or Chrome, IE with limited functionality.)
