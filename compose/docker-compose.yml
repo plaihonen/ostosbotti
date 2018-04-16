@@ -1,0 +1,42 @@
+# docker-compose exec tester_01 bash -c "/headless/tests/run-tests-inside.sh"
+
+version: "3.3"
+
+services:
+
+  tester_01:
+    image: consol/centos-xfce-vnc-beefed
+    ports:
+      - "5901:5901"
+      - "6901:6901"
+    environment:
+      TESTER_NUM: "01"
+    volumes:
+      - type: bind
+        source: /home/pietu/Projects/webshop
+        target: /headless/tests
+      - type: bind
+        source: /home/pietu/Tmp/rob-tests
+        target: /headless/tests/test_results
+    entrypoint:
+      - /dockerstartup/vnc_startup.sh
+      - bash -c "/headless/tests/run-tests-inside.sh"
+
+  tester_02:
+    image: consol/centos-xfce-vnc-beefed
+    ports:
+      - "5902:5902"
+      - "6902:6902"
+    environment:
+      TESTER_NUM: "02"
+    volumes:
+      - type: bind
+        source: /home/pietu/Projects/webshop
+        target: /headless/tests
+      - type: bind
+        source: /home/pietu/Tmp/rob-tests
+        target: /headless/tests/test_results
+    entrypoint:
+      - /dockerstartup/vnc_startup.sh
+      # Call below does not work yet.
+      - bash -c "/headless/tests/run-tests-inside.sh"
